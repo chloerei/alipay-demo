@@ -1,4 +1,6 @@
 class Alipay::TradePagePaysController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: [:notify]
+
   def show
   end
 
@@ -17,8 +19,16 @@ class Alipay::TradePagePaysController < ApplicationController
   end
 
   def done
+    @verify = @alipay.verify?(request.query_parameters)
   end
 
   def notify
+    if $alipay.verify?(request.request_parameters)
+      logger.info 'Verify success'
+      render plain: 'success'
+    else
+      logger.info 'Verify fail'
+      render plain: 'fail'
+    end
   end
 end
