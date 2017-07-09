@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/chloerei/alipay.git
-  revision: 2d3c198643db4550e785e04145266d6cb6217cd6
+  revision: 3fa1d739afba618b326cc921204300400abe4856
   branch: openapi
   specs:
     alipay (0.14.0)
@@ -192,6 +192,9 @@ DEPENDENCIES
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
+
+RUBY VERSION
+   ruby 2.4.1p111
 
 BUNDLED WITH
    1.15.1
