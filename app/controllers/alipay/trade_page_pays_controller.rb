@@ -19,7 +19,7 @@ class Alipay::TradePagePaysController < ApplicationController
   end
 
   def done
-    @verify = @alipay.verify?(request.query_parameters)
+    @verify = $alipay.verify?(request.query_parameters)
   end
 
   def notify
