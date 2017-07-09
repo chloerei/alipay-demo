@@ -16,6 +16,16 @@ require "rails/test_unit/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+def ENV.get(key, default = nil)
+  if ENV[key]
+    ENV[key]
+  elsif ENV["#{key}_FILE"]
+    File.read(ENV["#{key}_FILE"]).strip
+  else
+    default
+  end
+end
+
 module App
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.

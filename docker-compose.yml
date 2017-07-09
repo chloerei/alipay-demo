@@ -1,4 +1,4 @@
-version: '2'
+version: '3.3'
 services:
   web:
     build: .
@@ -7,3 +7,23 @@ services:
       - .:/app
     ports:
       - 3000:3000
+    environment:
+      ALIPAY_URL_FILE: /run/secrets/alipay_url
+      ALIPAY_APP_ID_FILE: /run/secrets/alipay_app_id
+      ALIPAY_APP_PRIVATE_KEY_FILE: /run/secrets/alipay_app_private_key
+      ALIPAY_PUBLIC_KEY_FILE: /run/secrets/alipay_public_key
+    secrets:
+      - alipay_url
+      - alipay_app_id
+      - alipay_app_private_key
+      - alipay_public_key
+
+secrets:
+  alipay_url:
+    file: secrets/alipay_url
+  alipay_app_id:
+    file: secrets/alipay_app_id
+  alipay_app_private_key:
+    file: secrets/alipay_app_private_key
+  alipay_public_key:
+    file: secrets/alipay_public_key

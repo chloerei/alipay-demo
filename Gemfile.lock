@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/chloerei/alipay.git
+  revision: 2d3c198643db4550e785e04145266d6cb6217cd6
+  branch: openapi
+  specs:
+    alipay (0.14.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -169,6 +176,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  alipay!
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
