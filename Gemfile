@@ -50,4 +50,4 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'alipay', github: 'chloerei/alipay', branch: 'openapi'
+gem 'alipay', '~> 0.15.0'
