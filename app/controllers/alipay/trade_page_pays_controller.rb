@@ -11,7 +11,7 @@ class Alipay::TradePagePaysController < ApplicationController
         out_trade_no: Time.now.to_s(:number),
         product_code: 'FAST_INSTANT_TRADE_PAY',
         total_amount: '0.01',
-        subject: 'Test Payment'
+        subject: 'Test Payment 中文'
       }.to_json,
       return_url: done_alipay_trade_page_pay_url,
       notify_url: notify_alipay_trade_page_pay_url
