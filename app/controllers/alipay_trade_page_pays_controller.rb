@@ -8,7 +8,7 @@ class AlipayTradePagePaysController < ApplicationController
     redirect_to $alipay.page_execute_url(
       method: 'alipay.trade.page.pay',
       biz_content: JSON.generate({
-        out_trade_no: Time.now.to_s(:number),
+        out_trade_no: SecureRandom.uuid,
         product_code: 'FAST_INSTANT_TRADE_PAY',
         total_amount: '0.01',
         subject: 'Test Payment 中文'
