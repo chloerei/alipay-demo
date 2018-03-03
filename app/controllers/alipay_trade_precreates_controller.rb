@@ -1,4 +1,6 @@
 class AlipayTradePrecreatesController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: [:notify]
+
   def show
   end
 
@@ -16,10 +18,6 @@ class AlipayTradePrecreatesController < ApplicationController
     logger.info alipay_response
 
     @qr_code_url = JSON.parse(alipay_response)['alipay_trade_precreate_response']['qr_code']
-  end
-
-  def done
-    @verify = $alipay.verify?(request.query_parameters)
   end
 
   def notify
