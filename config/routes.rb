@@ -6,4 +6,9 @@ Rails.application.routes.draw do
       post :notify
     end
   end
+
+  resource :alipay_trade_precreate do
+    get :done
+    post :notify
+  end
 end

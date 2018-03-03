@@ -1,21 +1,21 @@
-class Alipay::TradePagePaysController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: [:notify]
-
+class AlipayTradePrecreatesController < ApplicationController
   def show
   end
 
   def create
-    redirect_to $alipay.page_execute_url(
-      method: 'alipay.trade.page.pay',
+    alipay_response = $alipay.execute(
+      method: 'alipay.trade.precreate',
       biz_content: JSON.generate({
-        out_trade_no: Time.now.to_s(:number),
-        product_code: 'FAST_INSTANT_TRADE_PAY',
+        out_trade_no: SecureRandom.uuid,
         total_amount: '0.01',
         subject: 'Test Payment 中文'
       }, ascii_only: true),
-      return_url: done_alipay_trade_page_pay_url,
-      notify_url: notify_alipay_trade_page_pay_url
+      return_url: done_alipay_trade_precreate_url,
+      notify_url: notify_alipay_trade_precreate_url
     )
+    logger.info alipay_response
+
+    @qr_code_url = JSON.parse(alipay_response)['alipay_trade_precreate_response']['qr_code']
   end
 
   def done
