@@ -7,11 +7,11 @@ class AlipayTradePrecreatesController < ApplicationController
   def create
     alipay_response = $alipay.execute(
       method: 'alipay.trade.precreate',
-      biz_content: JSON.generate({
+      biz_content: {
         out_trade_no: SecureRandom.uuid,
         total_amount: '0.01',
         subject: 'Test Payment 中文'
-      }, ascii_only: true),
+      }.to_json(ascii_only: true),
       return_url: done_alipay_trade_precreate_url,
       notify_url: notify_alipay_trade_precreate_url
     )
